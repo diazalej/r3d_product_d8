@@ -1,0 +1,15 @@
+r3dproduct.product_form:
+  path: '/r3dproduct/form/product'
+  defaults:
+    _form: '\Drupal\r3dproduct\Form\ProductForm'
+    _title: 'Product Form'
+  requirements:
+    _access: 'TRUE'
+  
+r3dproduct.display_table:
+  path: '/r3dproducts'
+  defaults:
+    _controller: '\Drupal\r3dproduct\Controller\ProductController::display'
+    _title: 'Product list'
+  requirements:
+    _permission: 'access content'

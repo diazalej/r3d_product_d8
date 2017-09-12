@@ -1,0 +1,31 @@
+<?php
+
+function r3dproduct_schema() {
+  $schema['r3dproduct'] = array(
+    'fields' => array(
+      'id'=>array(
+        'type'=>'serial',
+        'not null' => TRUE,
+      ),
+      'name'=>array(
+        'type' => 'varchar',
+        'length' => 40,
+        'not null' => TRUE,
+      ),
+      'description'=>array(
+        'type' => 'varchar',
+        'length' => 250,
+        'not null' => TRUE,
+      ),
+      'price'=>array(
+        'type' => 'float',
+        'length' => 40,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+
+}

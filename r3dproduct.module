@@ -1,0 +1,22 @@
+<?php
+
+use Drupal\Component\Utility\SafeMarkup;
+use Drupal\Core\Mail\MailManagerInterface;
+
+/**
+ * Implements hook_mail().
+ */
+function r3dproduct_mail($key, &$message, $params) {
+
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+ 
+  switch ($key) {
+    case 'node_insert':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('Node created: @title', array('@title' => $params['node_title']), $options);
+      $message['body'][] = SafeMarkup::checkPlain($params['message']);
+      break;
+  }
+}

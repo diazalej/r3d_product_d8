@@ -1,0 +1,5 @@
+name: r3dproduct
+description: R3D products
+core: 8.x
+package: Custom
+type: module
