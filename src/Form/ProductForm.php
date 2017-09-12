@@ -108,18 +108,18 @@ class ProductForm extends FormBase {
         $module = 'r3dproduct';
         $key = 'node_insert';
         $to = \Drupal::currentUser()->getEmail();
-        $params['message'] = $field['description'];
-        $params['node_title'] = 'BLA BLA BLA';
+
+        // really ugly msg formating... move out. eventually
+        $params['message'] = "
+            R3D Product created:
+            name: " . $field['name'] . "
+            description: " . $field['description'] . "
+            price: " . $field['price'];
+        
+        $params['node_title'] = "Created: " . $field['name'];
         $langcode = \Drupal::currentUser()->getPreferredLangcode();
     
         $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, true);
-        if ($result['result'] !== true) {
-            $message = t('There was a problem sending your email notification to @email.', array('@email' => $to));
-            drupal_set_message($message, 'error');
-            \Drupal::logger('r3dproduct')->error($message);
-            return;
-        }
-    
         $message = t('An email notification has been sent to @email', array('@email' => $to));
         drupal_set_message($message);
         \Drupal::logger('r3dproduct')->notice($message);

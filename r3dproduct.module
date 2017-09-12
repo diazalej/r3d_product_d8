@@ -15,7 +15,7 @@ function r3dproduct_mail($key, &$message, $params) {
   switch ($key) {
     case 'node_insert':
       $message['from'] = \Drupal::config('system.site')->get('mail');
-      $message['subject'] = t('Node created: @title', array('@title' => $params['node_title']), $options);
+      $message['subject'] = t('R3D Products: @title', array('@title' => $params['node_title']), $options);
       $message['body'][] = SafeMarkup::checkPlain($params['message']);
       break;
   }
